@@ -1,11 +1,11 @@
 #include <SPI.h> //INCLUSÃO DE BIBLIOTECA
 #include <nRF24L01.h> //INCLUSÃO DE BIBLIOTECA
 #include <RF24.h> //INCLUSÃO DE BIBLIOTECA
- 
+int Array[4];
 RF24 radio(9, 10); //CRIA UMA INSTÂNCIA UTILIZANDO OS PINOS (CE, CSN)     
 const byte endereco[6] = "00001"; //CRIA UM ENDEREÇO PARA ENVIO DOS
 //DADOS (O TRANSMISSOR E O RECEPTOR DEVEM SER CONFIGURADOS COM O MESMO ENDEREÇO)
- 
+
 int pinoBotao = 2; //PINO DIGITAL UTILIZADO PELO BOTÃO
 int estadoBotao = 0; //VARIÁVEL PARA ARMAZENAR O ESTADO DO BOTÃO
  
@@ -20,12 +20,14 @@ void setup() {
  
 void loop(){
   if(digitalRead(pinoBotao) == HIGH){ //SE A LEITURA DO PINO FOR IGUAL A HIGH, FAZ
-    estadoBotao = 1; //VARIÁVEL RECEBE VALOR 1
-    radio.write(&estadoBotao, sizeof(estadoBotao)); //ENVIA AO RECEPTOR OS DADOS
+    estadoBotao = 1; //VARIÁVEL RECEBE VALOR 1 
+    Array[0] = estadoBotao;
+    radio.write(&Array, sizeof(Array)); //ENVIA AO RECEPTOR OS DADOS
   }else{ //SENÃO, FAZ
         if(digitalRead(pinoBotao) == LOW){ //SE A LEITURA DO PINO FOR IGUAL A LOW, FAZ
-        estadoBotao = 0; //VARIÁVEL RECEBE VALOR 0
-        radio.write(&estadoBotao, sizeof(estadoBotao)); //ENVIA AO RECEPTOR OS DADOS
+          estadoBotao = 0; //VARIÁVEL RECEBE VALOR 1 
+          Array[0] = estadoBotao;
+          radio.write(&Array, sizeof(Array)); //ENVIA AO RECEPTOR OS DADOS
         }
   }
 }
