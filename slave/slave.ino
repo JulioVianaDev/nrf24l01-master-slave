@@ -1,6 +1,9 @@
 #include <SPI.h> //INCLUSÃO DE BIBLIOTECA
 #include <nRF24L01.h> //INCLUSÃO DE BIBLIOTECA
 #include <RF24.h> //INCLUSÃO DE BIBLIOTECA
+#include <Servo.h>
+
+Servo servoBase; 
 
 RF24 radio(9, 10); //CRIA UMA INSTÂNCIA UTILIZANDO OS PINOS (CE, CSN)
 const byte endereco[6] = "00001"; //CRIA UM ENDEREÇO PARA ENVIO DOS
@@ -17,6 +20,9 @@ void setup() {
   radio.openReadingPipe(0, endereco);//DEFINE O ENDEREÇO PARA RECEBIMENTO DE DADOS VINDOS DO TRANSMISSOR
   radio.setPALevel(RF24_PA_HIGH); //DEFINE O NÍVEL DO AMPLIFICADOR DE POTÊNCIA
   radio.startListening(); //DEFINE O MÓDULO COMO RECEPTOR (NÃO ENVIA DADOS)
+
+  //servo conexão
+  servoBase.attach(5); 
 }
 
 void loop(){
