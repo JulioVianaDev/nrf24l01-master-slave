@@ -28,7 +28,7 @@ void setup() {
 void loop(){
   analog.update();
   int anguloFiltrado = analog.getValue();
-  int angleFiltradoConvertido=map(anguloFiltradoBase, 0, 1023, 0, 180);
+  int angleFiltradoConvertido=map(anguloFiltrado, 0, 1023, 0, 180);
   if(digitalRead(pinoBotao) == HIGH){ //SE A LEITURA DO PINO FOR IGUAL A HIGH, FAZ
     estadoBotao = 1; //VARIÁVEL RECEBE VALOR 1 
     Array[0] = estadoBotao;
