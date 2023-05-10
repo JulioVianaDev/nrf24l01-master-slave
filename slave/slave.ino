@@ -3,7 +3,7 @@
 #include <RF24.h> //INCLUSÃO DE BIBLIOTECA
 #include <Servo.h>
 
-Servo servoBase; 
+Servo servo; 
 
 RF24 radio(9, 10); //CRIA UMA INSTÂNCIA UTILIZANDO OS PINOS (CE, CSN)
 const byte endereco[6] = "00001"; //CRIA UM ENDEREÇO PARA ENVIO DOS
@@ -22,7 +22,7 @@ void setup() {
   radio.startListening(); //DEFINE O MÓDULO COMO RECEPTOR (NÃO ENVIA DADOS)
 
   //servo conexão
-  servoBase.attach(5); 
+  servo.attach(5); 
 }
 
 void loop(){
@@ -36,5 +36,6 @@ void loop(){
         }
     }
   }
+  Serial.println(gotArray[1]);
   delay(5); //INTERVALO DE 5 MILISSEGUNDOS
 }

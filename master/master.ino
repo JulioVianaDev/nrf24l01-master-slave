@@ -23,12 +23,15 @@ void setup() {
   radio.openWritingPipe(endereco); //DEFINE O ENDEREÇO PARA ENVIO DE DADOS AO RECEPTOR
   radio.setPALevel(RF24_PA_HIGH);  //DEFINE O NÍVEL DO AMPLIFICADOR DE POTÊNCIA
   radio.stopListening(); //DEFINE O MÓDULO COMO TRANSMISSOR (NÃO RECEBE DADOS)
+  Serial.begin(9600);
 }
  
 void loop(){
   analog.update();
   int anguloFiltrado = analog.getValue();
   int angleFiltradoConvertido=map(anguloFiltrado, 0, 1023, 0, 180);
+  Array[1] = angleFiltradoConvertido;
+  Serial.println(Array[1]);
   if(digitalRead(pinoBotao) == HIGH){ //SE A LEITURA DO PINO FOR IGUAL A HIGH, FAZ
     estadoBotao = 1; //VARIÁVEL RECEBE VALOR 1 
     Array[0] = estadoBotao;
@@ -40,4 +43,5 @@ void loop(){
           radio.write(&Array, sizeof(Array)); //ENVIA AO RECEPTOR OS DADOS
         }
   }
+  
 }
