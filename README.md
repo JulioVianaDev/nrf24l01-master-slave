@@ -2,8 +2,8 @@
 
 ##  master sketch:
 
-<img src="./masterSketch.jpg"/>
+<img src="./masterSketch.png"/>
 
 ##  slave sketch:
 
-<img src="./slaveSketch.jpg"/>
+<img src="./slaveSketch.png"/>
