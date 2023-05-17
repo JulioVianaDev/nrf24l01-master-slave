@@ -31,7 +31,7 @@ void loop(){
   int anguloFiltrado = analog.getValue();
   int angleFiltradoConvertido=map(anguloFiltrado, 0, 1023, 0, 180);
   Array[1] = angleFiltradoConvertido;
-  //Serial.println(Array[1]);
+  Serial.println(Array[1]);
   
   if(digitalRead(pinoBotao) == HIGH){ //SE A LEITURA DO PINO FOR IGUAL A HIGH, FAZ
     estadoBotao = 0; //VARIÁVEL RECEBE VALOR 1 
@@ -44,6 +44,5 @@ void loop(){
           radio.write(&Array, sizeof(Array)); //ENVIA AO RECEPTOR OS DADOS
         }
   }
-  Serial.println(Array[0]);
   
 }
