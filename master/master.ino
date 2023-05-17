@@ -32,7 +32,9 @@ void loop(){
   int angleFiltradoConvertido=map(anguloFiltrado, 0, 1023, 0, 180);
   Array[1] = angleFiltradoConvertido;
   //Serial.println(Array[1]);
-  
+  Serial.print(analogRead(5));
+  Serial.print("\t");
+  Serial.println(anguloFiltrado);
   if(digitalRead(pinoBotao) == HIGH){ //SE A LEITURA DO PINO FOR IGUAL A HIGH, FAZ
     estadoBotao = 0; //VARIÁVEL RECEBE VALOR 1 
     Array[0] = estadoBotao;
