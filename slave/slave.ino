@@ -37,5 +37,6 @@ void loop(){
     }
   }
   Serial.println(gotArray[1]);
+  Serial.println(gotArray[0]);
   delay(5); //INTERVALO DE 5 MILISSEGUNDOS
 }
